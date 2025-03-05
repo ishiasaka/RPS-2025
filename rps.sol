@@ -61,10 +61,10 @@ contract RPS is CommitReveal, TimeUnit {
         players[idx].hashedChoice = hashedAnswer;
         players[idx].isCommited = true;
         numInput++;
-        emit PlayerCommited(msg.sender);
+        emit PlayerCommited(msg.sender, idx);
     }
 
-    event PlayerCommited(address player);
+    event PlayerCommited(address player, uint8 idx);
 
     // If player not answered for
     function requestRefund(uint8 idx) public {
@@ -124,7 +124,9 @@ contract RPS is CommitReveal, TimeUnit {
         numReveal++;
         if (numReveal == 2) {
             _checkWinnerAndPay();
+            return;
         }
+        setStartTime();
     }
 
     function getChoiceHash(uint8 choice, string memory salt)
