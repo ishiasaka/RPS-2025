@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
 import "commit-reveal.sol";
 import "time-unit.sol";
@@ -134,7 +134,7 @@ contract RPS is CommitReveal, TimeUnit {
         view
         returns (bytes32)
     {
-        require(choice >= 0 && choice < 7, "Error(RPS::getChoiceHash): Choice is not correct!!!");
+        require(choice >= 0 && choice < 5, "Error(RPS::getChoiceHash): Choice is not correct!!!");
         bytes32 bSalt = bytes32(abi.encodePacked(salt));
         bytes32 bChoice = bytes32(abi.encodePacked(choice));
         return getSaltedHash(bChoice, bSalt);
