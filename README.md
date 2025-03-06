@@ -1,5 +1,8 @@
 # RPS (Big bang Theory's version)
 
+## Entry file
+RPS.sol
+
 ## How to play
 
 1. Players call addPlayer to join this contract and pay 2 ether into contracts
